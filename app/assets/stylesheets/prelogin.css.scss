@@ -1,0 +1,56 @@
+body {
+	background: -moz-linear-gradient(#ffffff 0%,#aecce7 100%); /*url('/assets/blue.jpg')*/;
+}
+
+#wrapper {
+	background: url("/assets/clouds.png") no-repeat fixed center 64px transparent;
+	min-height: 100%;
+	height: 100%;
+}
+
+/* centro */
+#wrapper .container {
+	background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("/assets/sancho.png");
+    background-origin: padding-box;
+    background-position: 600px -42px;
+    background-repeat: no-repeat;
+    background-size: 700px auto;
+    display: block;
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+    width: 95%;
+}
+
+#searchBox {
+	padding: 10px;
+	width: 400px;
+}
+
+#sancho {
+	position: absolute;
+	top: 100px;
+	right: 100px;
+	z-index: 0;
+}
+
+#search {
+	margin-top: 180px;
+	margin-left: 250px;
+	text-align: center;
+	width: 420px;
+}
+
+/* footer */
+footer p {
+	float: right;
+	width: 80%;
+	padding: 20px 20px;;
+	background: #FFF;
+	margin-top: 20px;
+	border-radius: 5px;
+	text-align: justify;
+}
