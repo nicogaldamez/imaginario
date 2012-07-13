@@ -1,2 +1,17 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1> Registro de usuario </h1>
+<div class="row">
+  <div class="span3">
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages' %>
+		
+			<%= f.text_field :firstname, :placeholder => 'Nombre' %>
+			
+			<%= f.text_field :email, :placeholder => 'Correo' %>
+			
+			<%= f.password_field :password, :placeholder => 'Clave' %>
+			
+			<%= f.submit "Registrarme", :class => "btn btn-primary" %>
+			
+		<% end %>
+	</div>
+</div>

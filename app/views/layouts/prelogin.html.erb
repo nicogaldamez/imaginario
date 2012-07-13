@@ -4,39 +4,21 @@
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<title> Imaginario </title>
 	<%= stylesheet_link_tag  "application", :media => "all" %>
+	<%= stylesheet_link_tag  "custom" %>
 	<%= stylesheet_link_tag "prelogin" %>
 	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "prelogin" %>
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<header class="navbar navbar-fixed-top">
-		<div>
-			<div class="container">
-			  <nav>
-			    <ul id="navigation" class="nav">
-					<li><%= link_to image_tag("key.png", :border=>0), '#', :rel => 'tooltip', :title => 'Ingresar' %></li>
-					<li><%= link_to image_tag("home.png", :border=>0), '#', :rel => 'tooltip', :title => 'Inicio' %></li>
-					<li><%= link_to image_tag("lists.png", :border=>0), '#', :rel => 'tooltip', :title => 'Listas' %></li>
-					<li><%= link_to image_tag("explore.png", :border=>0), '#', :rel => 'tooltip', :title => 'Explorar' %></li>
-			    </ul>
-			  </nav>
-			</div>
-		</div>
-	</header>
-	
+	<%= render 'layouts/header' %>
+		
 	<div id="wrapper"> 
 		<div class="container">
 			<%= yield %>
 		</div>
+		<%= debug(params) if Rails.env.development? %>
 	</div>
 	
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#navigation').tooltip({
-				selector: "a[rel=tooltip]",
-				placement: "bottom"
-			});
-		});
-	</script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<div id="signin_signout" class="row span3 well">
+	<div id="signin">
+		<h4> Inicio de sesión </h4>
+		<%= link_to "Soy nuevo","#", 'class' => 'change', :class => "newUser", :onclick => "showSignup()" %>
+		<div class="row">
+			<div class="span3">
+				<%= form_for(@user) do |f| %>
+				
+					<%= f.text_field :email, :placeholder => 'Correo', :id => 'signinemail' %>
+					
+					<%= f.password_field :password, :placeholder => 'Clave', :id => 'signinpassword' %>
+					
+					
+					
+					<%= f.submit "Iniciar sesion", :class => "btn btn-primary" %>
+					
+					<%= link_to "Olvidé mi clave","#", :class => 'forgot' %>
+					
+				<% end %>
+				
+				
+			</div>
+		</div>
+		
+	</div>
+	
+	<div id="signup">
+		<h4> Registro de usuario </h4>
+		<div class="row">
+			<div class="span3">
+				<%= form_for(@user) do |f| %>
+				
+					<%= f.text_field :firstname, :placeholder => 'Nombre', :id => 'signupfirstname' %>
+					
+					<%= f.text_field :email, :placeholder => 'Correo', :id => 'signupemail' %>
+					
+					<%= f.password_field :password, :placeholder => 'Clave', :id => 'signuppassword' %>
+					
+					<%= f.submit "Registrarme", :class => "btn btn-primary" %>
+					
+					<%= link_to "Soy usuario","#", 'class' => 'imUser', :onclick => "showSignin()" %>
+					
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

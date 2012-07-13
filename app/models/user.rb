@@ -17,14 +17,16 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :firstname, :password
   
-  has_secure_password
+  
   
   before_save { |user| user.email = email.downcase }
   
-  validates :firstname, :presence => true, :length => { :maximum => 100 }
+  validates :firstname,:presence => true, :length => { :maximum => 100 }
   
-  validates :password, :presence => true, :length => {:minimum => 6}
+  has_secure_password
+  
+  validates :password, :length => {:minimum => 6,:message => "debe tener como mínimo 6 caracteres"}
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, :presence => true, :format => { :with => VALID_EMAIL_REGEX },:uniqueness => { :case_sensitive => false }
+  validates :email, :format => { :with => VALID_EMAIL_REGEX },:uniqueness => { :case_sensitive => false }
 end
