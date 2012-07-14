@@ -18,7 +18,7 @@ require 'spec_helper'
 
 describe User do
   
-  before { @user = User.new(:firstname => "Nicolás", :email => "nicogaldamez@gmail.com",
+  before { @user = User.new(:firstname => "Cualquiera", :email => "a@b.com",
   							:password => "foobar1") }
   
   subject { @user }
@@ -27,6 +27,7 @@ describe User do
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:remember_token) }
   
   it { should be_valid }
   
@@ -101,4 +102,9 @@ describe User do
 	  before { @user.password = @user.password_confirmation = "a" * 5 }
 	  it { should be_invalid }
   end 
+  
+  describe "rcordar token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
 end

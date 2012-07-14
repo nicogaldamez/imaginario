@@ -1,0 +1,21 @@
+<h1> Inicio de sesión </h1>
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(:session, :url => sessions_path) do |f| %>
+		
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+			
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+						
+			<%= f.submit "Iniciar sesión", :class => "btn btn-primary" %>
+			
+			<%= link_to "Olvidé mi clave","#", :class => 'forgot' %>
+			
+		<% end %>
+		
+		<p> ¿Sos nuevo? <%= link_to "Registrate", signup_path %></p>
+		
+	</div>
+</div>

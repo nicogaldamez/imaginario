@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120710225942) do
+ActiveRecord::Schema.define(:version => 20120714225347) do
 
   create_table "users", :force => true do |t|
     t.string   "firstname"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(:version => 20120710225942) do
     t.date     "date_of_birth"
     t.string   "nickname"
     t.string   "gender"
+    t.string   "remember_token"
   end
+
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

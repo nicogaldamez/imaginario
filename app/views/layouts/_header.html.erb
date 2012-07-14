@@ -1,35 +1,31 @@
 <header class="navbar navbar-fixed-top">
-	<div>
-		<div class="container">
-		  <nav>
-		    <ul id="navigation" class="nav">
-				<li id="key"><%= link_to image_tag("key.png", :border=>0), '#', 
-						:onclick => "showForm()",
-						:rel => 'tooltip', 
-						:title => 'Iniciar sesión'						
-					%>
-				</li>
-				<li><%= link_to image_tag("home.png", :border=>0), '#', :rel => 'tooltip', :title => 'Inicio' %></li>
-				<li><%= link_to image_tag("lists.png", :border=>0), '#', :rel => 'tooltip', :title => 'Listas' %></li>
-				<li><%= link_to image_tag("explore.png", :border=>0), '#', :rel => 'tooltip', :title => 'Explorar' %></li>
-		    </ul>
-		  </nav>
-		  
-		</div>
-	</div>
-	
-	<%= render 'prelogin/forms' %> 	
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "sample app", root_path, :id => "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Help", root_path %></li>
+          <% if signed_in? %>
+            <li><%= link_to "Users", '#' %></li>
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", '#' %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", signout_path, :method => "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Sign in", signin_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </header>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#navigation').tooltip({
-			selector: "a[rel=tooltip]",
-			placement: "bottom"
-		});
-		$('#key').tooltip({
-			selector: "a[rel=tooltip]",
-			placement: "left"
-		});
-	});
-</script>

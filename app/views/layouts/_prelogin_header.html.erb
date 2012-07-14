@@ -1,0 +1,35 @@
+<header class="navbar navbar-fixed-top">
+	<div>
+		<div class="container">
+		  <nav>
+		    <ul id="navigation" class="nav">
+				<li id="key"><%= link_to image_tag("key.png", :border=>0), '#', 
+						:onclick => "showForm()",
+						:rel => 'tooltip', 
+						:title => 'Iniciar sesión'						
+					%>
+				</li>
+				<li><%= link_to image_tag("home.png", :border=>0), '#', :rel => 'tooltip', :title => 'Inicio' %></li>
+				<li><%= link_to image_tag("lists.png", :border=>0), '#', :rel => 'tooltip', :title => 'Listas' %></li>
+				<li><%= link_to image_tag("explore.png", :border=>0), '#', :rel => 'tooltip', :title => 'Explorar' %></li>
+		    </ul>
+		  </nav>
+		  
+		</div>
+	</div>
+	
+	<%= render 'prelogin/forms' %> 	
+</header>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#navigation').tooltip({
+			selector: "a[rel=tooltip]",
+			placement: "bottom"
+		});
+		$('#key').tooltip({
+			selector: "a[rel=tooltip]",
+			placement: "left"
+		});
+	});
+</script>

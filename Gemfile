@@ -12,6 +12,10 @@ group :development, :test do
   gem 'rspec-rails', '2.10.0'
 end
 
+group :test do
+  gem 'factory_girl_rails', '1.4.0'
+end
+
 gem 'mysql'
 gem 'json'
 
