@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "UserPages" do
+  subject { page }
   
   describe "signup" do
 
@@ -8,21 +9,31 @@ describe "UserPages" do
 
     let(:submit) { "Registrarme" }
 
-    describe "con informaci�n inv�lida" do
-      it "no deber�a crear usuario" do
-        expect { click_button "Registrarme" }.not_to change(User, :count)
+    describe "con información inválida" do
+      it "no debería crear usuario" do
+        expect { click_button submit }.not_to change(User, :count)
       end
+      
+      describe "después de enviar el formulario" do
+        before { click_button submit }
+        
+         it { should have_content('El nombre no puede estar en blanco') } 
+         it { should have_content('La clave no puede estar en blanco') } 
+         it { should have_content('La clave debe tener como mínimo 6 caracteres') } 
+         it { should have_content('El correo no es válido') } 
+      end
+
     end
 
-    describe "con informaci�n v�lida" do
+    describe "con información válida" do
       before do
         fill_in "signupfirstname",  :with => "Example User"
         fill_in "signupemail",      :with => "user@example.com"
         fill_in "signuppassword",   :with => "foobar"
       end
 
-      it "deber�a crear un usuario" do
-        expect { click_button "Registrarme" }.to change(User, :count).by(1)
+      it "debería crear un usuario" do
+        expect { click_button submit }.to change(User, :count).by(1)
       end
     end
   end
